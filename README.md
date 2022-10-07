@@ -1,5 +1,9 @@
 # travels-hoteles
 
+## Integrantes
+## Jose Ignacio diaz diaz
+## Roger Jesus Feris Montoya
+
 ## Project setup
 ```
 npm install
