@@ -36,19 +36,21 @@ export default {
   }
 
   nav{
+    
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     background-color: azure;
 }
 
 nav > div{
+    
     padding: 5px;
-    background-color: azure;
     margin: 5px;
-    color: white;
+    
 
 }
- 
+
   main{
       background-color: white;
       flex-grow: 8;

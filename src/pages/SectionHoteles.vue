@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="shadow p-4 mb-5 bg-body rounded">
-            <div class="container-md">
+        <div class="shadow p-4 mb-5 bg-body rounded" style="width: auto;">
+            <div class="container-fluid">
                 <div class="row mb-3">
                     <div class="col">
                         <h4>
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pe-5 ps-5 pt-2">
+                <div class="pe-6 ps-6 pt-3">
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>

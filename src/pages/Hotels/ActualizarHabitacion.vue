@@ -22,9 +22,9 @@
                                 <i class="bi bi-caret-right-fill"></i>
                             </li>
                             <li class="nav-item">
-                                <router-link class="routerLink" to="">
-                                    <i class="bi bi-door-open"> </i>Habitaciones
-                                </router-link>
+                                <a @click="regresar(habitacion.hotel_id)" class="nav-item nav-link ms-3" href="#">
+                                    <i class="bi bi-door-open"> </i> Hotel
+                                </a>                               
                             </li>
                             <li>
                                 <i class="bi bi-caret-right-fill"></i>
@@ -144,6 +144,13 @@
             }
         },
         methods: {
+            regresar(id) {
+                this.$router.push({ name: 'SectionHabitaciones',
+                    params: {
+                        id: id
+                    } 
+                })
+            },
             update() {
                 this.errores = {}
                 axios({
@@ -163,7 +170,8 @@
                     this.info = null
                     this.errores = {}
                 }, 5000)
-            }
+            },
+        
         }
     }
 </script>

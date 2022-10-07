@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-    <div class="shadow p-4 mb-5 bg-body rounded">
+    <article class="shadow p-4 mb-5 bg-body rounded">
         <div v-if="success" class="p-4">
             <div class="shadow p-1 mb-2 bg-body rounded">
                 <div class="flex-grow">
@@ -23,9 +23,9 @@
                                 <i class="bi bi-caret-right-fill"></i>
                             </li>
                             <li class="nav-item">
-                                <router-link class="routerLink" to="">
-                                    <i class="bi bi-door-open"> </i>Habitaciones
-                                </router-link>
+                                <a @click="regresar(this.$route.params.id)" class="nav-item nav-link ms-3" href="#">
+                                    <i class="bi bi-door-open"> </i> Hotel
+                                </a>                               
                             </li>
                             <li>
                                 <i class="bi bi-caret-right-fill"></i>
@@ -96,7 +96,7 @@
                         <div class="form-group d-flex justify-content-between">
                             <button @click="crearHabitacion" type="submit" id="btn_save"
                                 class="btn btn-primary row-3 mt-2">
-                                <i class="bi bi-upload"> </i> Crear habitación
+                                <i class="bi bi-plus-circle"></i>Nueva habitación
                             </button>
                         </div>
                     </div>
@@ -109,28 +109,25 @@
                 id ingresado no se encuentra registrado
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <script>
 import axios from 'axios'
 
-
 export default {
     beforeMount() {
-        
-        axios
-        .get('http://ec2-44-201-108-206.compute-1.amazonaws.com/decameron/api/hotels/' + this.$route.params.id)
+        // Obtener datos de hotel
+        axios.get('http://ec2-44-201-108-206.compute-1.amazonaws.com/decameron/api/hotels/' + this.$route.params.id)
             .then(response => (
                 this.hotel = response.data.data,
                 this.success = response.data.success,
-                (!this.success) ? document.getElementById("notId").classList.remove("d-none") : ""
-            ))
-        
+                (!this.success)?document.getElementById("notId").classList.remove("d-none"):""
+                ))
+        // Get tipos de habitaciones
         axios.get('http://ec2-44-201-108-206.compute-1.amazonaws.com/decameron/api/room-types')
             .then(response => (this.room_types = response.data))
-        
-
+        // Get tipos de acomodaciones
         axios.get('http://ec2-44-201-108-206.compute-1.amazonaws.com/decameron/api/accommodation-types')
             .then(response => (this.accommodation_types = response.data))
     },
@@ -155,7 +152,14 @@ export default {
         }
     },
     methods: {
-        
+        regresar(id) {
+            this.$router.push({
+                name: 'SectionHabitaciones',
+                params: {
+                    id: id
+                }
+            })
+        },
         crearHabitacion() {
             this.errores = []
             axios({
