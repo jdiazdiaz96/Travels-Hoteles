@@ -1,0 +1,1 @@
+li{display:inline-flex;margin:0 15px}nav{display:flex;justify-content:space-between;align-items:center;background-color:azure}nav>div{padding:5px;margin:5px}main{background-color:#fff;flex-grow:8;height:auto;padding:20px}footer{position:relative;padding:30px;background-color:#8fbc8f;text-align:center;color:#fff}.routerLink{text-decoration:none;color:#000}
